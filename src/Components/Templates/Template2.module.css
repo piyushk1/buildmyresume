@@ -1,0 +1,122 @@
+.template2 {
+  font-family: 'Verdana', sans-serif;
+  color: #2c3e50;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  width: 750px;
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.leftColumn {
+  background-color: #f3f6fa;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+}
+
+.rightColumn {
+  padding: 20px;
+}
+
+.header h1 {
+  font-size: 24px;
+  color: #062150;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 16px; 
+  font-weight: 400; 
+  color: #1a1a1a;
+  line-height: 1.5; 
+}
+
+.skillsSection {
+  margin-top: 20px;
+}
+
+.skillsSection h2 {
+  font-size: 20px;
+  color: #062150;
+  margin-bottom: 10px;
+}
+
+.skills {
+  list-style-type: circle;
+  padding-left: 20px;
+}
+
+.skills li {
+  font-size: 14px;
+  color: #2c3e50;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  font-size: 20px;
+  color: #062150;
+  border-bottom: 2px solid #062150;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+.job, .education, .project {
+  margin-bottom: 15px;
+}
+
+.job h3, .education h3, .project h3 {
+  font-size: 18px;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.job p, .education p, .project p {
+  font-size: 16px; 
+  font-weight: 400; 
+  color: #1a1a1a;
+  line-height: 1.5; 
+}
+
+.project p strong {
+  color: #062150;
+}
+
+.certificate h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+.certificate p {
+  font-size: 16px; 
+  font-weight: 400; 
+  color: #1a1a1a;
+  line-height: 1.5; 
+}
+
+
+.downloadButton {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #062150;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.downloadButton:hover {
+  background-color: #0a3871;
+}

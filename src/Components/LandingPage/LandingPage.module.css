@@ -1,0 +1,111 @@
+
+.landingPage {
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+
+  .hero {
+    background-color: #062150;
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .ctaButton {
+    background-color: white;
+    color: #062150;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ctaButton:hover {
+    background-color: #0540a0;
+    color: white;
+  }
+  
+
+  .features {
+    background-color: #f9f9f9;
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  
+  .featureCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .featureCard {
+    background-color: white;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 300px;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  }
+  .featureCard:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  
+  .featureTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .featureCard:active {
+    transform: scale(1.1);
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.2);
+  }
+
+  .featureDescription {
+    font-size: 1rem;
+  }
+  
+  .footer {
+    background-color: #062150;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  
+  .footerText {
+    font-size: 0.9rem;
+  }
+  

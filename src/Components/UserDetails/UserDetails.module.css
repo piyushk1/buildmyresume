@@ -1,0 +1,147 @@
+.saveButton {
+    margin : 10px;
+
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4caf50; 
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .saveButton:hover {
+    background-color: #45a049; 
+  }
+  
+  .saveButton:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+  
+  .saveButton:disabled {
+    background-color: #ccc; 
+    cursor: not-allowed;
+  }
+  
+
+  .userDetailsForm {
+    font-family: Arial, sans-serif;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .section h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .collapsibleContent {
+    margin-top: 10px;
+  }
+  
+  .formGroup {
+    margin-bottom: 10px;
+  }
+  
+  .formGroup label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .formGroup input,
+  .formGroup textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .formGroup textarea {
+    resize: none;
+  }
+  
+  .educationEntry,
+  .workEntry {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .addButton,
+  .removeButton {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #062150;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addButton:hover,
+  .removeButton:hover {
+    background-color: #053a8e;
+  }
+  
+  .removeButton {
+    background-color: #e63946;
+  }
+  
+  .removeButton:hover {
+    background-color: #d62828;
+  }
+  
+
+  .addButton:disabled,
+  .removeButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  
+  .addButton:focus,
+  .removeButton:focus,
+  .saveButton:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+  
+  .formGroup input:focus,
+  .formGroup textarea:focus {
+    border-color: #062150;
+    box-shadow: 0 0 0 2px rgba(6, 33, 80, 0.2);
+  }
+  
+
+  .resetButton, .saveButton {
+    padding: 10px 20px;
+    border: none;
+    background-color: #062150;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .resetButton {
+    background-color: #e74c3c; 
+  }
+  
+  .saveButton {
+    background-color: #27ae60; 
+  }
+  
+ 
