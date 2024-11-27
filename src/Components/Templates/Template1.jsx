@@ -2,6 +2,13 @@
 
 import styles from "./Template1.module.css";
 import generatePDF from "../../utils/generatePDF";
+
+const  dateFormat = (date) => {
+  if (!date) return ""; 
+  const options = { year: "numeric", month: "short" };
+  return new Date(date).toLocaleDateString(undefined, options);
+}
+
 export default function Template1({ resumeData }) {
  
   return (
@@ -15,6 +22,7 @@ export default function Template1({ resumeData }) {
 
         {/* Work Experience Section */}
         <section className={styles.section}>
+          {console.log(resumeData)}
           <h2>Work Experience</h2>
           {Array.isArray(resumeData?.workExperience) && resumeData.workExperience.length > 0 ? (
             resumeData.workExperience.map((job, index) => (
@@ -22,8 +30,9 @@ export default function Template1({ resumeData }) {
                 <h3>
                   {job.role} - {job.company}
                 </h3>
-                <p>{job.duration}</p>
-                <p>{job.achievements}</p>
+                {/* <p>{job.duration}</p> */}
+               <p> {dateFormat(job.from)} - {job.currentlyWorking ? "Present" : dateFormat(job.to)}</p>
+                <p>{job.workdescription}</p>
               </div>
             ))
           ) : (

@@ -1,18 +1,33 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 
-export const ThemeContext = createContext();
 
-export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("light");
+const ThemeContext = createContext();
 
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+// Custom hook to use theme context
+export const useAppTheme = () => {
+  return useContext(ThemeContext);
+};
+
+// Theme provider component
+export const AppThemeProvider = ({ children }) => {
+  const [isDarkTheme, setIsDarkTheme] = useState(true); 
+
+
+  const toggleThemeMode = () => {
+    setIsDarkTheme((prevTheme) => !prevTheme); 
   };
 
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      "data-theme",
+      isDarkTheme ? "dark" : "light"
+    );
+  }, [isDarkTheme]);
+
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div data-theme={theme}>{children}</div>
+    <ThemeContext.Provider value={{ toggleThemeMode, isDarkTheme }}>
+      {children}
     </ThemeContext.Provider>
   );
 };

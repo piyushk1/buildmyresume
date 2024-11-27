@@ -3,6 +3,13 @@ import styles from './Template2.module.css';
 import generatePDF from "../../utils/generatePDF";
 
 export default function Template2({ resumeData }) {
+
+  
+const  dateFormat = (date) => {
+  if (!date) return ""; 
+  const options = { year: "numeric", month: "short" };
+  return new Date(date).toLocaleDateString(undefined, options);
+}
   return (
     <div>
       <div className={styles.template2}>
@@ -56,8 +63,9 @@ export default function Template2({ resumeData }) {
                 <h3>
                   {job.role || "Job Title"} - {job.company || "Company Name"}
                 </h3>
-                <p>{job.duration}</p>
-                <p>{job.achievements}</p>
+                {/* <p>{job.duration}</p> */}
+                <p> {dateFormat(job.from)} - {job.currentlyWorking ? "Present" : dateFormat(job.to)}</p>
+                <p>{job.workdescription}</p>
               </div>
             ))
           ) : (

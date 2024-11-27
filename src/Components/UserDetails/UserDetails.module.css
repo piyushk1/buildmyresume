@@ -1,6 +1,5 @@
 .saveButton {
     margin : 10px;
-
     padding: 8px 12px;
     border: none;
     border-radius: 4px;
@@ -9,6 +8,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
+ 
   
   .saveButton:hover {
     background-color: #45a049; 
@@ -27,6 +27,11 @@
 
   .userDetailsForm {
     font-family: Arial, sans-serif;
+    
+   
+  }
+  .userDetailsForm h2{
+    margin-bottom: 2rem;
   }
   
   .section {
@@ -35,6 +40,7 @@
     border-radius: 8px;
     padding: 10px;
     background-color: #fff;
+   
     cursor: pointer;
   }
   
@@ -46,10 +52,12 @@
   
   .collapsibleContent {
     margin-top: 10px;
+  
   }
   
   .formGroup {
     margin-bottom: 10px;
+    
   }
   
   .formGroup label {
@@ -60,11 +68,12 @@
   
   .formGroup input,
   .formGroup textarea {
-    width: 100%;
+    width: 96%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
+ 
   }
   
   .formGroup textarea {
@@ -143,5 +152,19 @@
   .saveButton {
     background-color: #27ae60; 
   }
+  
+  .dateGroup {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .checkboxGroup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px;
+  }
+
   
  

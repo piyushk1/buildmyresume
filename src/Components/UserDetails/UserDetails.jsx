@@ -1,7 +1,10 @@
+import { DatePicker } from "@mui/x-date-pickers";
+import dayjs from "dayjs";
 import { useContext, useState } from "react";
 import { ResumeContext } from "../../context/ResumeContext";
 import styles from "./UserDetails.module.css";
 import Select from "react-select";
+
 export default function UserDetails() {
   const { resumeData, setResumeData } = useContext(ResumeContext);
   const [expandedSection, setExpandedSection] = useState(null);
@@ -61,7 +64,14 @@ export default function UserDetails() {
       ...prev,
       workExperience: [
         ...(prev.workExperience || []),
-        { company: "", role: "", duration: "", achievements: "" },
+        {
+          company: "",
+          role: "",
+          from: null,
+          to: null,
+          currentlyWorking: false,
+          workdescription: "",
+        },
       ],
     }));
   };
@@ -70,6 +80,9 @@ export default function UserDetails() {
     setResumeData((prev) => {
       const updatedWorkExperience = [...prev.workExperience];
       updatedWorkExperience[index][field] = value;
+      if (field === "currentlyWorking" && value) {
+        updatedWorkExperience[index].to = null; // Clear the 'To' date if currently working
+      }
       return { ...prev, workExperience: updatedWorkExperience };
     });
   };
@@ -191,16 +204,17 @@ export default function UserDetails() {
             <div className={styles.formGroup}>
               <label>Phone:</label>
               <input
-                type="text"
+                type="tel"
                 name="phone"
                 value={resumeData.phone}
                 onChange={handleInputChange}
               />
+
+           
             </div>
           </div>
         )}
       </div>
-
       {/* Skills */}
       <div className={styles.section}>
         <h3 onClick={() => toggleSection("skills")}>Skills</h3>
@@ -249,7 +263,6 @@ export default function UserDetails() {
           </div>
         )}
       </div>
-
       {/* Education Section */}
       <div className={styles.section}>
         <h3 onClick={() => toggleSection("education")}>Education</h3>
@@ -284,7 +297,7 @@ export default function UserDetails() {
                 <div className={styles.formGroup}>
                   <label>Year of Passing:</label>
                   <input
-                    type="text"
+                    type="number"
                     name="yearOfPassing"
                     value={edu.yearOfPassing}
                     onChange={(e) =>
@@ -322,7 +335,6 @@ export default function UserDetails() {
           </div>
         )}
       </div>
-
       {/* Work Experience Section */}
       <div className={styles.section}>
         <h3 onClick={() => toggleSection("work")}>Work Experience</h3>
@@ -331,17 +343,6 @@ export default function UserDetails() {
             {resumeData.workExperience?.map((work, index) => (
               <div key={index} className={styles.workEntry}>
                 <h4>Work Experience {index + 1}</h4>
-                <div className={styles.formGroup}>
-                  <label>Company:</label>
-                  <input
-                    type="text"
-                    name="company"
-                    value={work.company}
-                    onChange={(e) =>
-                      updateWorkField(index, "company", e.target.value)
-                    }
-                  />
-                </div>
                 <div className={styles.formGroup}>
                   <label>Role:</label>
                   <input
@@ -354,24 +355,67 @@ export default function UserDetails() {
                   />
                 </div>
                 <div className={styles.formGroup}>
-                  <label>Duration:</label>
+                  <label>Company:</label>
                   <input
                     type="text"
-                    name="duration"
-                    value={work.duration}
+                    name="company"
+                    value={work.company}
                     onChange={(e) =>
-                      updateWorkField(index, "duration", e.target.value)
+                      updateWorkField(index, "company", e.target.value)
                     }
                   />
                 </div>
+
+                <div className={styles.dateGroup}>
+                  <div className={styles.formGroup}>
+                    <label>From:</label>
+                    <DatePicker
+                      value={work.from ? dayjs(work.from) : null}
+                      onChange={(date) => updateWorkField(index, "from", date)}
+                      format="DD/MM/YYYY"
+                      renderInput={(params) => (
+                        <input {...params} placeholder="Select Start Date" />
+                      )}
+                    />
+                  </div>
+                  {!work.currentlyWorking && (
+                    <div className={styles.formGroup}>
+                      <label>To:</label>
+                      <DatePicker
+                        value={work.to ? dayjs(work.to) : null}
+                        onChange={(date) => updateWorkField(index, "to", date)}
+                        format="DD/MM/YYYY"
+                        renderInput={(params) => (
+                          <input {...params} placeholder="Select End Date" />
+                        )}
+                      />
+                    </div>
+                  )}
+                  <div className={styles.checkboxGroup}>
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={work.currentlyWorking}
+                        onChange={(e) =>
+                          updateWorkField(
+                            index,
+                            "currentlyWorking",
+                            e.target.checked
+                          )
+                        }
+                      />
+                      Currently Working
+                    </label>
+                  </div>
+                </div>
                 <div className={styles.formGroup}>
-                  <label>Achievements:</label>
+                  <label>description:</label>
                   <textarea
-                    name="achievements"
+                    name="workdescription"
                     rows="3"
-                    value={work.achievements}
+                    value={work.workdescription}
                     onChange={(e) =>
-                      updateWorkField(index, "achievements", e.target.value)
+                      updateWorkField(index, "workdescription", e.target.value)
                     }
                   />
                 </div>
@@ -401,7 +445,6 @@ export default function UserDetails() {
           </div>
         )}
       </div>
-
       {/* Certificates Section */}
       <div className={styles.section}>
         <h3 onClick={() => toggleSection("certificates")}>Certificates</h3>
@@ -447,7 +490,6 @@ export default function UserDetails() {
           </div>
         )}
       </div>
-
       <div className={styles.section}>
         <h3 onClick={() => toggleSection("projects")}>Projects</h3>
         {expandedSection === "projects" && (
@@ -482,9 +524,9 @@ export default function UserDetails() {
                   <Select
                     isMulti
                     name="technologies"
-                    options={technologyOptions} 
-                    value={technologyOptions.filter(
-                      (option) => project.technologies.includes(option.value) 
+                    options={technologyOptions}
+                    value={technologyOptions.filter((option) =>
+                      project.technologies.includes(option.value)
                     )}
                     onChange={(selectedOptions) => {
                       const selectedTechnologies = selectedOptions.map(
